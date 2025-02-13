@@ -1,9 +1,9 @@
 name: Reserve DOI for Release
 
+# Manually triggered when a new release is about to occur
+
 on:
-  release:
-    types: [created]  # Runs when a GitHub release is drafted
-    draft: true
+  workflow-dispatch:
 
 jobs:
   reserve-doi:
