@@ -6,6 +6,7 @@
 ![Status](https://img.shields.io/pypi/status/pyspedas.svg)
 ![License](https://img.shields.io/pypi/l/pyspedas.svg)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14862210.svg)](https://doi.org/10.5281/zenodo.14862210)
+[![DOI](https://zenodo.org/badge/latestdoi.svg)](https://doi.org/latest)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 The Python-based Space Physics Environment Data Analysis Software (PySPEDAS) framework supports multi-mission, multi-instrument retrieval, analysis, and visualization of heliophysics time series data.
