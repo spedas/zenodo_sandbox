@@ -3,7 +3,7 @@ name: Reserve DOI for Release
 # Manually triggered when a new release is about to occur
 
 on:
-  workflow-dispatch:
+  workflow_dispatch:
 
 jobs:
   reserve-doi:
