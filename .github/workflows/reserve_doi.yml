@@ -22,7 +22,9 @@ jobs:
           RESPONSE=$(curl -s -H "Authorization: Bearer $ZENODO_API_TOKEN" \
             "https://zenodo.org/api/records?q=doi:$CONCEPT_DOI")
 
-          LATEST_RECORD_ID=$(echo "$RESPONSE" | jq -r '.[0].id')
+          echo "$RESPONSE"
+          
+          LATEST_RECORD_ID=$(echo "$RESPONSE" | jq -r '.id')
 
           if [ "$LATEST_RECORD_ID" == "null" ]; then
             echo "Error: Could not find latest deposition ID"
