@@ -3,6 +3,7 @@ name: Reserve DOI for Release
 on:
   release:
     types: [created]  # Runs when a GitHub release is drafted
+    draft: true
 
 jobs:
   reserve-doi:
