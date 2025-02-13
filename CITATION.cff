@@ -1,0 +1,35 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: zenodo_sandbox
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: James
+    family-names: Lewis
+    email: jwl@ssl.berkeley.edu
+    affiliation: 'University of California, Berkeley'
+    orcid: 'https://orcid.org/0009-0005-4191-5906'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.14862141
+    description: All Versions
+  - type: doi
+    value: 10.5281/zenodo.14862210
+    description: Version 1.1.2
+repository-code: 'https://github.org/spedas/zenodo_sandbox'
+url: 'https://pyspedas.readthedocs.io'
+abstract: >-
+  A sandbox repository for exploring Zenodo-GitHub
+  integration before deploying it for PySPEDAS
+keywords:
+  - heliophysics
+  - python
+  - sandbox
+  - testbed
+license: MIT
+version: 1.1.2
+date-released: '2025-02-13'
