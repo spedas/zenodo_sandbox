@@ -40,7 +40,7 @@ jobs:
           
           echo "Creating new version using Zenodo record $LATEST_PUBLIC_RECORD_ID, access token $ZENODO_API_TOKEN"
 
-          REQUEST=https://zenodo.org/api/deposit/depositions/$LATEST_PUBLIC_RECORD_ID/actions/newversion?access_token=$ZENODO_API_TOKEN"
+          REQUEST=https://zenodo.org/api/deposit/depositions/$LATEST_PUBLIC_RECORD_ID/actions/newversion?access_token=$ZENODO_API_TOKEN
 
           echo $REQUEST
           
