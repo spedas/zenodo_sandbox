@@ -41,13 +41,16 @@ jobs:
           echo "Creating new version using Zenodo record $LATEST_PUBLIC_RECORD_ID"
 
           # Create a new version from the latest deposition
-          RESPONSE=$(curl -s -X POST "https://zenodo.org/api/deposit/depositions/$LATEST_PUBLIC_RECORD_ID/actions/newversion" \
-            -H "Authorization: Bearer $ZENODO_API_TOKEN")
+          RESPONSE=$(curl -s -X POST "https://zenodo.org/api/deposit/depositions/$LATEST_PUBLIC_RECORD_ID/actions/newversion?access_token=$ZENODO_API_TOKEN" )
 
           echo $RESPONSE
           
           NEW_RECORD_ID=$(echo "$RESPONSE" | jq -r '.id')
           NEW_DOI=$(echo "$RESPONSE" | jq -r '.metadata.doi')
+
+          if [ -z "$NEW_DOI" ] || [ "$NEW_DOI" == "null" ]; then
+            echo "Error: Could not create new record in private API."
+            exit 1
 
           echo "New deposition ID: $NEW_RECORD_ID"
           echo "DOI: $NEW_DOI"
