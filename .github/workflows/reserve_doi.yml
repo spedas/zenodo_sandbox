@@ -38,4 +38,4 @@ jobs:
         id: new_version
         run: |
           
-          echo "Creating new version using Zenodo record $LATEST_PUBLIC_RECORD_ID
+          echo "Creating new version using Zenodo record $LATEST_PUBLIC_RECORD_ID"
