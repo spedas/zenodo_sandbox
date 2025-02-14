@@ -21,13 +21,13 @@ jobs:
 
           # Find the latest deposition (record ID)
           RESPONSE=$(curl -s -H "Authorization: Bearer $ZENODO_API_TOKEN" \
-            "https://zenodo.org/api/deposit/depositions?access_token=$ZENODO_API_TOKEN")
+            "https://zenodo.org/api/deposit/depositions?all_versions=true?access_token=$ZENODO_API_TOKEN")
 
           echo "$RESPONSE"
           
           # Extract deposition ID that matches the Concept DOI
           LATEST_RECORD_ID=$(echo "$RESPONSE" | jq -r --arg conceptdoi "$CONCEPT_DOI" \
-            '[.[] | select(.metadata.conceptdoi == $conceptdoi)] | max_by(.created) | .id')
+            '[.[] | select(.metadata.parentdoi == $conceptdoi)] | max_by(.created) | .id')
       
           if [ -z "$LATEST_RECORD_ID" ] || [ "$LATEST_RECORD_ID" == "null" ]; then
             echo "Error: No matching deposition found for Concept DOI: $CONCEPT_DOI"
