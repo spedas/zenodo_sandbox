@@ -52,8 +52,11 @@ jobs:
           
           NEW_RECORD_ID=$(echo "$RESPONSE" | jq -r '.id')
           NEW_DOI=$(echo "$RESPONSE" | jq -r '.metadata.doi')
+          
+          echo New record ID: $NEW_RECORD_ID
+          echo New DOI: $NEW_DOI
 
-          if [ -z "$NEW_DOI" ] || [ "$NEW_DOI" == "null" ]; then
+          if [ -z "$NEW_RECORD_ID" ] || [ "$NEW_RECORD_ID" == "null" ]; then
             echo "Error: Could not create new record in private API."
             exit 1
           fi
