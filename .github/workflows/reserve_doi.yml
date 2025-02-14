@@ -25,12 +25,14 @@ jobs:
 
           echo "$RESPONSE"
           
-          LATEST_RECORD_ID=$(echo "$RESPONSE" | jq -r '.[0].id')
-
-          if [ "$LATEST_RECORD_ID" == "null" ]; then
-            echo "Error: Could not find latest deposition ID"
+          # Extract deposition ID that matches the Concept DOI
+          LATEST_RECORD_ID=$(echo "$RESPONSE" | jq -r --arg conceptdoi "$CONCEPT_DOI" \
+            '[.[] | select(.metadata.conceptdoi == $conceptdoi)] | max_by(.created) | .id')
+      
+          if [ -z "$LATEST_RECORD_ID" ] || [ "$LATEST_RECORD_ID" == "null" ]; then
+            echo "Error: No matching deposition found for Concept DOI: $CONCEPT_DOI"
             exit 1
           fi
-
-          echo "Latest deposition ID: $LATEST_RECORD_ID"
+      
+          echo "Latest deposition ID for Concept DOI ($CONCEPT_DOI): $LATEST_RECORD_ID"
           echo "LATEST_RECORD_ID=$LATEST_RECORD_ID" >> $GITHUB_ENV
