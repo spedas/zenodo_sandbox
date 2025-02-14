@@ -17,14 +17,15 @@ jobs:
         run: |
           ZENODO_API_TOKEN=${{ secrets.ZENODO_API_TOKEN }}
           CONCEPT_DOI="10.5281/zenodo.14862141"
+          ZENODO_RECID="14862141"
 
           # Find the latest deposition (record ID)
           RESPONSE=$(curl -s -H "Authorization: Bearer $ZENODO_API_TOKEN" \
-            "https://zenodo.org/api/records?q=doi:$CONCEPT_DOI")
+            "https://zenodo.org/api/records/$ZENODO_RECID")
 
           echo "$RESPONSE"
           
-          LATEST_RECORD_ID=$(echo "$RESPONSE" | jq -r '.id')
+          LATEST_RECORD_ID=$(echo "$RESPONSE" | jq -r '.[0].id')
 
           if [ "$LATEST_RECORD_ID" == "null" ]; then
             echo "Error: Could not find latest deposition ID"
@@ -33,29 +34,3 @@ jobs:
 
           echo "Latest deposition ID: $LATEST_RECORD_ID"
           echo "LATEST_RECORD_ID=$LATEST_RECORD_ID" >> $GITHUB_ENV
-
-      - name: Create New Version on Zenodo
-        id: create_version
-        run: |
-          ZENODO_API_TOKEN=${{ secrets.ZENODO_API_TOKEN }}
-          LATEST_RECORD_ID=${{ env.LATEST_RECORD_ID }}
-
-          # Create a new version from the latest deposition
-          RESPONSE=$(curl -s -X POST "https://zenodo.org/api/deposit/depositions/$LATEST_RECORD_ID/actions/newversion" \
-            -H "Authorization: Bearer $ZENODO_API_TOKEN")
-
-          NEW_RECORD_ID=$(echo "$RESPONSE" | jq -r '.id')
-          NEW_DOI=$(echo "$RESPONSE" | jq -r '.metadata.doi')
-
-          echo "New deposition ID: $NEW_RECORD_ID"
-          echo "DOI: $NEW_DOI"
-
-          echo "NEW_RECORD_ID=$NEW_RECORD_ID" >> $GITHUB_ENV
-          echo "DOI=$NEW_DOI" >> $GITHUB_ENV
-
-      - name: Update CITATION.cff with Reserved DOI
-        run: |
-          sed -i "s|doi: .*|doi: \"${DOI}\"|" CITATION.cff
-          git add CITATION.cff
-          git commit -m "Updated DOI in CITATION.cff" || echo "No changes to commit"
-          git push
