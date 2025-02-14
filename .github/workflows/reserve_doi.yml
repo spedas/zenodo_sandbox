@@ -46,15 +46,13 @@ jobs:
           echo $REQUEST
           
           # Create a new version from the latest deposition
-          RESPONSE=$(curl -s -X POST $REQUEST )
+          #RESPONSE=$(curl -s -X POST $REQUEST )
 
-          echo $RESPONSE
+          #echo $RESPONSE
           
-          NEW_RECORD_ID=$(echo "$RESPONSE" | jq -r '.id')
-          NEW_DOI=$(echo "$RESPONSE" | jq -r '.metadata.doi')
-          
+          #NEW_RECORD_ID=$(echo "$RESPONSE" | jq -r '.id')
+          NEW_RECORD_ID="14872810"
           echo New record ID: $NEW_RECORD_ID
-          echo New DOI: $NEW_DOI
 
           if [ -z "$NEW_RECORD_ID" ] || [ "$NEW_RECORD_ID" == "null" ]; then
             echo "Error: Could not create new record in private API."
@@ -62,8 +60,32 @@ jobs:
           fi
 
           echo "New deposition ID: $NEW_RECORD_ID"
-          echo "DOI: $NEW_DOI"
+          NEW_DOI="10.5281/zenodo.$NEW_RECORD_ID"
+          echo "New DOI:" $NEW_DOI
+          NEW_DOI_URL="https://doi.org/$NEW_DOI"
+          echo "NEW DOI (full URL):" $NEW_DOI_URL
 
           echo "NEW_RECORD_ID=$NEW_RECORD_ID" >> $GITHUB_ENV
-          echo "DOI=$NEW_DOI" >> $GITHUB_ENV
+          echo "NEW_DOI=$NEW_DOI" >> $GITHUB_ENV
+          echo "NEW_DOI_URL=$NEW_DOI_URL" >> $GITHUB_ENV
+
+      - name: Update DOI references in distribution files
+        id: update_doi_files
+        run: |
+         
+          ZENODO_API_TOKEN=${{ secrets.ZENODO_API_TOKEN }} 
+          
+          echo "Updating pyproject.toml with ${NEW_DOI_URL}"
+          
+          sed -i "s|"DOI (Latest)" .*|"DOI (Latest)" = ${NEW_DOI_URL}|" pyproject.toml
+          git add pyproject.toml
+          git commit -m "Updated DOI in pyproject.toml" || echo "No changes to commit"
+          git push
+ 
+          echo "Updating CITATION.cff with ${NEW_DOI}"
+          
+          sed -i "s|doi: .*|doi: ${NEW_DOI}|" CITATION.cff
+          git add CITATION.cff
+          git commit -m "Updated DOI in CITATION.cff" || echo "No changes to commit"
+          git push
 
