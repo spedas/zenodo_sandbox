@@ -21,7 +21,7 @@ jobs:
 
           # Find the latest deposition (record ID)
           RESPONSE=$(curl -s -H "Authorization: Bearer $ZENODO_API_TOKEN" \
-            "https://zenodo.org/api/records/$ZENODO_RECID")
+            "https://zenodo.org/api/deposit/depositions/?access_token=$ACCESS_TOKEN)
 
           echo "$RESPONSE"
           
