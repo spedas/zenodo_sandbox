@@ -81,8 +81,9 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           
           echo "Updating pyproject.toml with ${NEW_DOI_URL}"
-          
-          sed -i "s|\"DOI \(Latest\)\" .*|\"DOI \(Latest\)\" = ${NEW_DOI_URL}|" pyproject.toml
+          PATT='"DOI \(Latest\)".*'
+          REPL="\"DOI (Latest)\" = \"${NEW_DOI_URL}\""
+          sed -i "s|${PATT}|${REPL}|" pyproject.toml
           
           echo "Revised pyproject.toml:"
           cat pyproject.toml
