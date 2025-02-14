@@ -39,3 +39,19 @@ jobs:
         run: |
           
           echo "Creating new version using Zenodo record $LATEST_PUBLIC_RECORD_ID"
+
+          # Create a new version from the latest deposition
+          RESPONSE=$(curl -s -X POST "https://zenodo.org/api/deposit/depositions/$LATEST_PUBLIC_RECORD_ID/actions/newversion" \
+            -H "Authorization: Bearer $ZENODO_API_TOKEN")
+
+          echo $RESPONSE
+          
+          NEW_RECORD_ID=$(echo "$RESPONSE" | jq -r '.id')
+          NEW_DOI=$(echo "$RESPONSE" | jq -r '.metadata.doi')
+
+          echo "New deposition ID: $NEW_RECORD_ID"
+          echo "DOI: $NEW_DOI"
+
+          echo "NEW_RECORD_ID=$NEW_RECORD_ID" >> $GITHUB_ENV
+          echo "DOI=$NEW_DOI" >> $GITHUB_ENV
+
