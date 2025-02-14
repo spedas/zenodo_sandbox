@@ -37,7 +37,8 @@ jobs:
       - name: Create new version from latest record ID
         id: new_version
         run: |
-          
+         
+          ZENODO_API_TOKEN=${{ secrets.ZENODO_API_TOKEN }} 
           echo "Creating new version using Zenodo record $LATEST_PUBLIC_RECORD_ID, access token $ZENODO_API_TOKEN"
 
           REQUEST=https://zenodo.org/api/deposit/depositions/$LATEST_PUBLIC_RECORD_ID/actions/newversion?access_token=$ZENODO_API_TOKEN
