@@ -75,9 +75,17 @@ jobs:
          
           ZENODO_API_TOKEN=${{ secrets.ZENODO_API_TOKEN }} 
           
+          
+          echo "Setting Git identity to github-actions[bot]"
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          
           echo "Updating pyproject.toml with ${NEW_DOI_URL}"
           
           sed -i "s|\"DOI \(Latest\)\" .*|\"DOI \(Latest\)\" = ${NEW_DOI_URL}|" pyproject.toml
+          
+          echo "Revised pyproject.toml:"
+          cat pyproject.toml
           git add pyproject.toml
           git commit -m "Updated DOI in pyproject.toml" || echo "No changes to commit"
           git push
@@ -85,6 +93,8 @@ jobs:
           echo "Updating CITATION.cff with ${NEW_DOI}"
           
           sed -i "s|doi: .*|doi: ${NEW_DOI}|" CITATION.cff
+          echo "Revised CITATION.cff:"
+          cat CITATION.cff
           git add CITATION.cff
           git commit -m "Updated DOI in CITATION.cff" || echo "No changes to commit"
           git push
