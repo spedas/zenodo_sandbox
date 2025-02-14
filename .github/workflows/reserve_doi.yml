@@ -85,7 +85,7 @@ jobs:
           REPL="\"DOI (Latest)\" = \"${NEW_DOI_URL}\""
           echo "PATT: ${PATT}
           echo "REPL: ${REPL}
-          edit "Matching lines:"
+          echo "Matching lines:"
           sed -E -n "/$PATT/p" pyproject.toml
           echo "Replacing..."
           sed -i -E "s|${PATT}|${REPL}|" pyproject.toml
