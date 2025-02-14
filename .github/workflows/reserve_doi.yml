@@ -33,3 +33,9 @@ jobs:
             echo "Found latest public record ID: $LATEST_PUBLIC_RECORD_ID"
             echo "LATEST_PUBLIC_RECORD_ID=$LATEST_PUBLIC_RECORD_ID" >> $GITHUB_ENV
           fi
+
+      - name: Create new version from latest record ID
+        id: new_version
+        run: |
+          
+          echo "Creating new version using Zenodo record $LATEST_PUBLIC_RECORD_ID
