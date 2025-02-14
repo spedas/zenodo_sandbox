@@ -17,22 +17,19 @@ jobs:
         run: |
           ZENODO_API_TOKEN=${{ secrets.ZENODO_API_TOKEN }}
           CONCEPT_DOI="10.5281/zenodo.14862141"
-          ZENODO_RECID="14862141"
+          CONCEPT_RECID="14862141"
 
-          # Find the latest deposition (record ID)
-          RESPONSE=$(curl -s -H "Authorization: Bearer $ZENODO_API_TOKEN" \
-            "https://zenodo.org/api/deposit/depositions?access_token=$ZENODO_API_TOKEN?all_versions=true")
-
-          echo "$RESPONSE"
-          
-          # Extract deposition ID that matches the Concept DOI
-          LATEST_RECORD_ID=$(echo "$RESPONSE" | jq -r --arg conceptdoi "$CONCEPT_DOI" \
-            '[.[] | select(.conceptdoi == $conceptdoi)] | max_by(.created) | .id')
+          # Query the public records API (does not require authentication)
+          RESPONSE=$(curl -s "https://zenodo.org/api/records?q=conceptdoi:$CONCEPT_DOI&size=1&sort=mostrecent")
       
-          if [ -z "$LATEST_RECORD_ID" ] || [ "$LATEST_RECORD_ID" == "null" ]; then
-            echo "Error: No matching deposition found for Concept DOI: $CONCEPT_DOI"
+          echo "Zenodo response: $RESPONSE"  # Debugging step
+      
+          LATEST_PUBLIC_RECORD_ID=$(echo "$RESPONSE" | jq -r '.hits.hits[0].id')
+      
+          if [ -z "$LATEST_PUBLIC_RECORD_ID" ] || [ "$LATEST_PUBLIC_RECORD_ID" == "null" ]; then
+            echo "Error: Could not find latest record in public API."
             exit 1
+          else
+            echo "Found latest public record ID: $LATEST_PUBLIC_RECORD_ID"
+            echo "LATEST_PUBLIC_RECORD_ID=$LATEST_PUBLIC_RECORD_ID" >> $GITHUB_ENV
           fi
-      
-          echo "Latest deposition ID for Concept DOI ($CONCEPT_DOI): $LATEST_RECORD_ID"
-          echo "LATEST_RECORD_ID=$LATEST_RECORD_ID" >> $GITHUB_ENV
