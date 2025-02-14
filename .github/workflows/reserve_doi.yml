@@ -27,7 +27,7 @@ jobs:
           
           # Extract deposition ID that matches the Concept DOI
           LATEST_RECORD_ID=$(echo "$RESPONSE" | jq -r --arg conceptdoi "$CONCEPT_DOI" \
-            '[.[] | select(.metadata.parentdoi == $conceptdoi)] | max_by(.created) | .id')
+            '[.[] | select(.conceptdoi == $conceptdoi)] | max_by(.created) | .id')
       
           if [ -z "$LATEST_RECORD_ID" ] || [ "$LATEST_RECORD_ID" == "null" ]; then
             echo "Error: No matching deposition found for Concept DOI: $CONCEPT_DOI"
