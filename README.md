@@ -118,6 +118,8 @@ Mission specific data directories (e.g., `MMS_DATA_DIR` for MMS, `THM_DATA_DIR` 
 
 In order to successfully access the specified cloud repository, the user is required to correctly set up permissions to be able to read and write to that cloud repository on their own. Refer (here)[https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-files.html] for how to prepare your AWS configuration and credentials.
 
+Note: this feature is still under development.  
+
 ## Usage
 
 To get started, import pyspedas and pytplot:
