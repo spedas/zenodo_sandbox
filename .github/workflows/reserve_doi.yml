@@ -21,7 +21,7 @@ jobs:
 
           # Query the public records API (does not require authentication)
           # Try adding the access token to see if draft releases are returned
-          RESPONSE=$(curl -s "https://zenodo.org/api/records?q=conceptdoi:$CONCEPT_DOI&size=1&sort=mostrecent&access_token=$ZENODO_API_TOKEN")
+          RESPONSE=$(curl -s "https://zenodo.org/api/deposit/depositions?q=conceptdoi:$CONCEPT_DOI&size=1&sort=mostrecent&access_token=$ZENODO_API_TOKEN")
       
           echo "Zenodo response: $RESPONSE"  # Debugging step
       
