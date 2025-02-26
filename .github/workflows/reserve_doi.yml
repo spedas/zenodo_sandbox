@@ -20,7 +20,8 @@ jobs:
           CONCEPT_RECID="14862141"
 
           # Query the public records API (does not require authentication)
-          RESPONSE=$(curl -s "https://zenodo.org/api/records?q=conceptdoi:$CONCEPT_DOI&size=1&sort=mostrecent")
+          # Try adding the access token to see if draft releases are returned
+          RESPONSE=$(curl -s "https://zenodo.org/api/records?q=conceptdoi:$CONCEPT_DOI&size=1&sort=mostrecent?access_token=$ZENODO_API_TOKEN")
       
           echo "Zenodo response: $RESPONSE"  # Debugging step
       
