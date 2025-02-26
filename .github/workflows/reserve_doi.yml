@@ -51,13 +51,13 @@ jobs:
           echo Response:
           echo $RESPONSE
           
-          #NEW_RECORD_ID=$(echo "$RESPONSE" | jq -r '.id')
-          NEW_RECORD_ID="14872810"
+          NEW_RECORD_ID=$(echo "$RESPONSE" | jq -r '.id')
+          #NEW_RECORD_ID="14872810"
           echo New record ID: $NEW_RECORD_ID
 
           if [ -z "$NEW_RECORD_ID" ] || [ "$NEW_RECORD_ID" == "null" ]; then
             echo "Error: Could not create new record in private API."
-            echo "Perhaps a draft release already exists?
+            echo "Perhaps a draft release already exists?"
             exit 1
           fi
 
