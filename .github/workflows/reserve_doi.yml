@@ -30,9 +30,11 @@ jobs:
           LATEST_RECID=$(echo "$RESPONSE" | jq -r '.[0].id')
       
           LATEST_PUBLIC_RECORD_ID=$(echo "$RESPONSE" | jq -r '.[0].id')
-          lATEST_PUBLIC_RECORD_SUBMITTED=$(echo "$RESPONSE" | jq -r '.[0].submitted')
+          LATEST_PUBLIC_RECORD_STATE=$(echo "$RESPONSE" | jq -r '.[0].state')
+          LATEST_PUBLIC_RECORD_SUBMITTED=$(echo "$RESPONSE" | jq -r '.[0].submitted')
   
-          echo "Latest record ID:" $LATEST_PUBLIC_RECORD_ID
+          echo "Latest record ID:" $LATEST_PUBLIC_RECORD_ID          
+          echo "Latest record state:" $LATEST_PUBLIC_RECORD_STATE
           echo "Latest record submission status:" $LATEST_PUBLIC_RECORD_SUBMITTED
           
           if [ -z "$LATEST_PUBLIC_RECORD_ID" ] || [ "$LATEST_PUBLIC_RECORD_ID" == "null" ]; then
