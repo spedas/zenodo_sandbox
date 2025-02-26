@@ -46,9 +46,10 @@ jobs:
           echo $REQUEST
           
           # Create a new version from the latest deposition
-          #RESPONSE=$(curl -s -X POST $REQUEST )
+          RESPONSE=$(curl -s -X POST $REQUEST )
 
-          #echo $RESPONSE
+          echo Response:
+          echo $RESPONSE
           
           #NEW_RECORD_ID=$(echo "$RESPONSE" | jq -r '.id')
           NEW_RECORD_ID="14872810"
@@ -56,6 +57,7 @@ jobs:
 
           if [ -z "$NEW_RECORD_ID" ] || [ "$NEW_RECORD_ID" == "null" ]; then
             echo "Error: Could not create new record in private API."
+            echo "Perhaps a draft release already exists?
             exit 1
           fi
 
@@ -97,6 +99,23 @@ jobs:
           git push
  
           echo "Updating CITATION.cff with ${NEW_DOI}"
+          
+          # This doesn't update all the references in citation.cff yet.  The versioned DOI and release version number
+          # appear in the identifiers: tag:
+          #
+          # identifiers:
+          # - type: doi
+          # value: 10.5281/zenodo.14862141
+          # description: All Versions
+          # - type: doi
+          # value: 10.5281/zenodo.14862210
+          # description: Version 1.1.2
+          #
+          # And the version number also appears in the version: tag:
+          # version: 1.1.2
+          # 
+          # And there's a date-released tag that should be updated:
+          # date-released: '2025-02-13'
           
           sed -i "s|doi: .*|doi: ${NEW_DOI}|" CITATION.cff
           echo "Revised CITATION.cff:"
