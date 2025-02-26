@@ -27,7 +27,7 @@ jobs:
           
           # Check to see if we got a draft, or a published release
           
-          LATEST_RECID=$(echo "$RESPONSE" | jq -r '.hits.hits[0].id')
+          LATEST_RECID=$(echo "$RESPONSE" | jq -r '.id')
       
           LATEST_PUBLIC_RECORD_ID=$(echo "$RESPONSE" | jq -r '.id')
           lATEST_PUBLIC_RECORD_SUBMITTED=$(echo "$RESPONSE" | jq -r '.submitted')
