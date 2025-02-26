@@ -24,16 +24,37 @@ jobs:
           RESPONSE=$(curl -s "https://zenodo.org/api/deposit/depositions?q=conceptdoi:$CONCEPT_DOI&size=1&sort=mostrecent&access_token=$ZENODO_API_TOKEN")
       
           echo "Zenodo response: $RESPONSE"  # Debugging step
+          
+          # Check to see if we got a draft, or a published release
+          
+          LATEST_RECID=$(echo "$RESPONSE" | jq -r '.hits.hits[0].id')
       
-          LATEST_PUBLIC_RECORD_ID=$(echo "$RESPONSE" | jq -r '.hits.hits[0].id')
-      
+          LATEST_PUBLIC_RECORD_ID=$(echo "$RESPONSE" | jq -r '.id')
+          lATEST_PUBLIC_RECORD_SUBMITTED=$(echo "$RESPONSE" | jq -r '.submitted')
+  
+          echo "Latest record ID:" $LATEST_PUBLIC_RECORD_ID
+          echo "Latest record submission status:" $LATEST_PUBLIC_RECORD_SUBMITTED
+          
           if [ -z "$LATEST_PUBLIC_RECORD_ID" ] || [ "$LATEST_PUBLIC_RECORD_ID" == "null" ]; then
-            echo "Error: Could not find latest record in public API."
+            echo "Error: Could not find latest record in private API."
             exit 1
           else
             echo "Found latest public record ID: $LATEST_PUBLIC_RECORD_ID"
             echo "LATEST_PUBLIC_RECORD_ID=$LATEST_PUBLIC_RECORD_ID" >> $GITHUB_ENV
           fi
+
+          if [ -z "$LATEST_PUBLIC_RECORD_SUBMITTED" ] || [ "$LATEST_PUBLIC_RECORD_SUBMITTED" == "null" ]; then
+            echo "Error: Could not find latest record submission status in private API."
+            exit 1
+          fi
+          
+          if [ "$LATEST_PUBLIC_RECORD_SUBMITTED" == "false"
+            echo "Latest record is published, need to create a new draft
+          else
+            echo "A previous draft already exists, reusing."
+          fi
+          
+          exit 
 
       - name: Create new version from latest record ID
         id: new_version
