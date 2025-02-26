@@ -50,7 +50,7 @@ jobs:
             exit 1
           fi
           
-          if [ "$LATEST_PUBLIC_RECORD_SUBMITTED" == "false" ]
+          if [ "$LATEST_PUBLIC_RECORD_SUBMITTED" == "false" ]; then
             echo "Latest record is published, need to create a new draft"
           else
             echo "A previous draft already exists, need to clear and reuse."
