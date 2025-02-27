@@ -1,0 +1,843 @@
+{
+    "contributors": [
+      {
+        "affiliations": [
+          {
+            "id": "04chrp450",
+            "identifiers": [
+              {
+                "identifier": "04chrp450",
+                "scheme": "ror"
+              },
+              {
+                "identifier": "grid.27476.30",
+                "scheme": "grid"
+              },
+              {
+                "identifier": "0000 0001 0943 978X",
+                "scheme": "isni"
+              }
+            ],
+            "name": "Nagoya University"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Hori",
+          "given_name": "Tomo",
+          "name": "Hori, Tomo",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "id": "01an7q238",
+            "identifiers": [
+              {
+                "identifier": "01an7q238",
+                "scheme": "ror"
+              },
+              {
+                "identifier": "grid.47840.3f",
+                "scheme": "grid"
+              },
+              {
+                "identifier": "0000 0001 2181 7878",
+                "scheme": "isni"
+              }
+            ],
+            "name": "University of California, Berkeley"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Mitchell",
+          "given_name": "David",
+          "name": "Mitchell, David",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "id": "01an7q238",
+            "identifiers": [
+              {
+                "identifier": "01an7q238",
+                "scheme": "ror"
+              },
+              {
+                "identifier": "grid.47840.3f",
+                "scheme": "grid"
+              },
+              {
+                "identifier": "0000 0001 2181 7878",
+                "scheme": "isni"
+              }
+            ],
+            "name": "University of California, Berkeley"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Pulupa",
+          "given_name": "Marc",
+          "identifiers": [
+            {
+              "identifier": "0000-0002-1573-7457",
+              "scheme": "orcid"
+            }
+          ],
+          "name": "Pulupa, Marc",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "id": "01an7q238",
+            "identifiers": [
+              {
+                "identifier": "01an7q238",
+                "scheme": "ror"
+              },
+              {
+                "identifier": "grid.47840.3f",
+                "scheme": "grid"
+              },
+              {
+                "identifier": "0000 0001 2181 7878",
+                "scheme": "isni"
+              }
+            ],
+            "name": "University of California, Berkeley"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Oka",
+          "given_name": "Mitsuo",
+          "identifiers": [
+            {
+              "identifier": "0000-0003-2191-1025",
+              "scheme": "orcid"
+            }
+          ],
+          "name": "Oka, Mitsuo",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "person_or_org": {
+          "family_name": "Lillis",
+          "given_name": "Robert",
+          "identifiers": [
+            {
+              "identifier": "0000-0003-0578-517X",
+              "scheme": "orcid"
+            }
+          ],
+          "name": "Lillis, Robert",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "name": "Goddard Space Flight Center"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Breneman",
+          "given_name": "Aaron",
+          "identifiers": [
+            {
+              "identifier": "0000-0001-6331-497X",
+              "scheme": "orcid"
+            }
+          ],
+          "name": "Breneman, Aaron",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "name": "NASA Goddard Space Flight Center"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Wilson",
+          "given_name": "Lynn",
+          "identifiers": [
+            {
+              "identifier": "0000-0002-4313-1970",
+              "scheme": "orcid"
+            }
+          ],
+          "name": "Wilson, Lynn",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "person_or_org": {
+          "family_name": "Bromund",
+          "given_name": "Ken",
+          "name": "Bromund, Ken",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "person_or_org": {
+          "family_name": "Hara",
+          "given_name": "Takuya",
+          "name": "Hara, Takuya",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "person_or_org": {
+          "family_name": "Kovalick",
+          "given_name": "Tami",
+          "name": "Kovalick, Tami",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "id": "0171mag52",
+            "identifiers": [
+              {
+                "identifier": "0171mag52",
+                "scheme": "ror"
+              },
+              {
+                "identifier": "grid.133275.1",
+                "scheme": "grid"
+              },
+              {
+                "identifier": "0000 0004 0637 6666",
+                "scheme": "isni"
+              }
+            ],
+            "name": "Goddard Space Flight Center"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Candey",
+          "given_name": "Robert",
+          "identifiers": [
+            {
+              "identifier": "0000-0002-4698-8769",
+              "scheme": "orcid"
+            }
+          ],
+          "name": "Candey, Robert",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "person_or_org": {
+          "family_name": "Harris",
+          "given_name": "Bernie",
+          "name": "Harris, Bernie",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "person_or_org": {
+          "family_name": "Liu",
+          "given_name": "Michael",
+          "name": "Liu, Michael",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "id": "029pp9z10",
+            "identifiers": [
+              {
+                "identifier": "029pp9z10",
+                "scheme": "ror"
+              },
+              {
+                "identifier": "grid.474430.0",
+                "scheme": "grid"
+              },
+              {
+                "identifier": "0000 0004 0630 1170",
+                "scheme": "isni"
+              }
+            ],
+            "name": "Johns Hopkins University Applied Physics Laboratory"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Korth",
+          "given_name": "Haje",
+          "identifiers": [
+            {
+              "identifier": "0000-0001-7394-7439",
+              "scheme": "orcid"
+            }
+          ],
+          "name": "Korth, Haje",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "person_or_org": {
+          "family_name": "Chaston",
+          "given_name": "Christopher",
+          "identifiers": [
+            {
+              "identifier": "0000-0002-0029-717X",
+              "scheme": "orcid"
+            }
+          ],
+          "name": "Chaston, Christopher",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "person_or_org": {
+          "family_name": "LeContel",
+          "given_name": "Olivier",
+          "name": "LeContel, Olivier",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "name": "University of California, Berkeley"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Whittlesey",
+          "given_name": "Phyllis",
+          "identifiers": [
+            {
+              "identifier": "0000-0002-7287-5098",
+              "scheme": "orcid"
+            }
+          ],
+          "name": "Whittlesey, Phyllis",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      }
+    ],
+    "creators": [
+      {
+        "affiliations": [
+          {
+            "name": "UCLA Division of Physical Sciences"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Angelopoulos",
+          "given_name": "Vassilis",
+          "identifiers": [
+            {
+              "identifier": "0000-0001-7024-1561",
+              "scheme": "orcid"
+            }
+          ],
+          "name": "Angelopoulos, Vassilis",
+          "type": "personal"
+        },
+        "role": {
+          "id": "supervisor",
+          "title": {
+            "de": "SupervisorIn",
+            "en": "Supervisor"
+          }
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "id": "01an7q238",
+            "identifiers": [
+              {
+                "identifier": "01an7q238",
+                "scheme": "ror"
+              },
+              {
+                "identifier": "grid.47840.3f",
+                "scheme": "grid"
+              },
+              {
+                "identifier": "0000 0001 2181 7878",
+                "scheme": "isni"
+              }
+            ],
+            "name": "University of California, Berkeley"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Lewis",
+          "given_name": "Jim",
+          "identifiers": [
+            {
+              "identifier": "0009-0005-4191-5906",
+              "scheme": "orcid"
+            }
+          ],
+          "name": "Lewis, Jim",
+          "type": "personal"
+        },
+        "role": {
+          "id": "supervisor",
+          "title": {
+            "de": "SupervisorIn",
+            "en": "Supervisor"
+          }
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "id": "01an7q238",
+            "identifiers": [
+              {
+                "identifier": "01an7q238",
+                "scheme": "ror"
+              },
+              {
+                "identifier": "grid.47840.3f",
+                "scheme": "grid"
+              },
+              {
+                "identifier": "0000 0001 2181 7878",
+                "scheme": "isni"
+              }
+            ],
+            "name": "University of California, Berkeley"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "McTiernan",
+          "given_name": "James",
+          "identifiers": [
+            {
+              "identifier": "0000-0002-3038-176X",
+              "scheme": "orcid"
+            }
+          ],
+          "name": "McTiernan, James",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "id": "027ka1x80",
+            "identifiers": [
+              {
+                "identifier": "027ka1x80",
+                "scheme": "ror"
+              },
+              {
+                "identifier": "grid.238252.c",
+                "scheme": "grid"
+              },
+              {
+                "identifier": "0000 0004 4907 1619",
+                "scheme": "isni"
+              }
+            ],
+            "name": "National Aeronautics and Space Administration"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Grimes",
+          "given_name": "Eric",
+          "name": "Grimes, Eric",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "id": "046rm7j60",
+            "identifiers": [
+              {
+                "identifier": "046rm7j60",
+                "scheme": "ror"
+              },
+              {
+                "identifier": "grid.19006.3e",
+                "scheme": "grid"
+              },
+              {
+                "identifier": "0000 0001 2167 8097",
+                "scheme": "isni"
+              }
+            ],
+            "name": "University of California, Los Angeles"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Russell",
+          "given_name": "Cindy",
+          "name": "Russell, Cindy",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "name": "University of California Los Angeles"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Drozdov",
+          "given_name": "Alexander",
+          "identifiers": [
+            {
+              "identifier": "0000-0002-5334-2026",
+              "scheme": "orcid"
+            }
+          ],
+          "name": "Drozdov, Alexander",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "person_or_org": {
+          "family_name": "Cruce",
+          "given_name": "Patrick",
+          "name": "Cruce, Patrick",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "id": "01an7q238",
+            "identifiers": [
+              {
+                "identifier": "01an7q238",
+                "scheme": "ror"
+              },
+              {
+                "identifier": "grid.47840.3f",
+                "scheme": "grid"
+              },
+              {
+                "identifier": "0000 0001 2181 7878",
+                "scheme": "isni"
+              }
+            ],
+            "name": "University of California, Berkeley"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Hatzigeorgiu",
+          "given_name": "Nikos",
+          "name": "Hatzigeorgiu, Nikos",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "id": "046rm7j60",
+            "identifiers": [
+              {
+                "identifier": "046rm7j60",
+                "scheme": "ror"
+              },
+              {
+                "identifier": "grid.19006.3e",
+                "scheme": "grid"
+              },
+              {
+                "identifier": "0000 0001 2167 8097",
+                "scheme": "isni"
+              }
+            ],
+            "name": "University of California, Los Angeles"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Wu",
+          "given_name": "Jiashu",
+          "name": "Wu, Jiashu",
+          "type": "personal"
+        },
+        "role": {
+          "id": "projectmember",
+          "title": {
+            "de": "Projektmitglied",
+            "en": "Project member"
+          }
+        }
+      }
+    ],
+    "description": "<p>Zenodo Sandbox: SPEDAS (the Space Physics Environment Data Analysis System) is a set of tools, implemented in the IDL programming language, to locate, download, analyze, and visualize space-based and ground-based data sets of interest to heliophysics researchers.</p>",
+    "funding": [
+      {
+        "award": {
+          "number": "NAS5-02099",
+          "title": {
+            "en": "THEMIS"
+          }
+        },
+        "funder": {
+          "id": "027ka1x80",
+          "name": "National Aeronautics and Space Administration"
+        }
+      },
+      {
+        "award": {
+          "number": "NNG17PZ01C",
+          "title": {
+            "en": "SPEDAS Community Support"
+          }
+        },
+        "funder": {
+          "id": "027ka1x80",
+          "name": "National Aeronautics and Space Administration"
+        }
+      },
+      {
+        "award": {
+          "number": "NNG04EB99C",
+          "title": {
+            "en": "MMS"
+          }
+        },
+        "funder": {
+          "id": "027ka1x80",
+          "name": "National Aeronautics and Space Administration"
+        }
+      }
+    ],
+    "languages": [
+      {
+        "id": "eng",
+        "title": {
+          "en": "English"
+        }
+      }
+    ],
+    "publication_date": "2014-08-27",
+    "publisher": "Zenodo",
+    "related_identifiers": [
+      {
+        "identifier": "10.1007/s11214-018-0576-4",
+        "relation_type": {
+          "id": "isdescribedby",
+          "title": {
+            "de": "Wird beschrieben von",
+            "en": "Is described by"
+          }
+        },
+        "resource_type": {
+          "id": "publication-article",
+          "title": {
+            "de": "Zeitschriftenartikel",
+            "en": "Journal article"
+          }
+        },
+        "scheme": "doi"
+      }
+    ],
+    "resource_type": {
+      "id": "software",
+      "title": {
+        "de": "Software",
+        "en": "Software"
+      }
+    },
+    "rights": [
+      {
+        "description": {
+          "en": "A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code."
+        },
+        "id": "mit",
+        "props": {
+          "scheme": "spdx",
+          "url": "https://opensource.org/licenses/MIT"
+        },
+        "title": {
+          "en": "MIT License"
+        }
+      }
+    ],
+    "subjects": [
+      {
+        "subject": "heliophysics"
+      },
+      {
+        "subject": "software"
+      },
+      {
+        "subject": "IDL"
+      }
+    ],
+    "title": "ZenodoSandbox (zenodo.json)",
+    "version": "1.1.6_zenodo_json"
+  }
