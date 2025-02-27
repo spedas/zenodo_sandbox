@@ -2,10 +2,10 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: zenodo_sandbox v1.1.5 cff
+title: zenodo_sandbox v1.1.6 cff
 message: >-
   If you use this software, please cite it using the
-  metadata from this file.
+  metadata from this file. (cff)
 type: software
 authors:
   - given-names: James
@@ -29,13 +29,13 @@ repository-code: 'https://github.org/spedas/zenodo_sandbox'
 url: 'https://pyspedas.readthedocs.io'
 abstract: >-
   A sandbox repository for exploring Zenodo-GitHub
-  integration before deploying it for PySPEDAS
+  integration before deploying it for PySPEDAS (cff)
 keywords:
   - heliophysics
   - python
   - sandbox
   - testbed
 license: MIT
-version: 1.1.5
+version: 1.1.6
 doi: 10.5281/zenodo.14934426
 date-released: '2025-02-13'
