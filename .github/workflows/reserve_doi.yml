@@ -63,7 +63,14 @@ jobs:
 
           echo "DRAFT_RECID:" $DRAFT_RECID
           echo "DRAFT_RECID=${DRAFT_RECID}" >> $GITHUB_ENV  
+
+          NEW_DOI="10.5281/zenodo.$DRAFT_RECID"
+          echo "New DOI:" $NEW_DOI
+          echo "NEW_DOI=${NEW_DOI}" >> $GITHUB_ENV 
           
+          NEW_DOI_URL="https://doi.org/$NEW_DOI"
+          echo "NEW DOI (full URL):" $NEW_DOI_URL
+          echo "NEW_DOI_URL=${NEW_DOI_URL}" >> $GITHUB_ENV           
 
       - name: Create new version from latest record ID
         id: new_version
