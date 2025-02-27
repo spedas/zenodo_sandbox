@@ -59,10 +59,10 @@ jobs:
           fi
 
           echo "NEED_NEW_DRAFT:" $NEED_NEW_DRAFT
-          echo "NEED_NEW_DRAFT=${NEED_NEW_DRAFT} >> $GITHUB_ENV  
+          echo "NEED_NEW_DRAFT=${NEED_NEW_DRAFT}" >> $GITHUB_ENV  
 
           echo "DRAFT_RECID:" $DRAFT_RECID
-          echo "DRAFT_RECID=${DRAFT_RECID} >> $GITHUB_ENV  
+          echo "DRAFT_RECID=${DRAFT_RECID}" >> $GITHUB_ENV  
           
 
       - name: Create new version from latest record ID
