@@ -105,7 +105,7 @@ Information = "https://spedas.org/wiki/"
 Documentation = "https://pyspedas.readthedocs.io"
 Issue_Tracker = "https://github.com/spedas/pyspedas/issues"
 Source_Code = "https://github.com/spedas/pyspedas"
-"DOI (Latest)" = "https://doi.org/10.5281/zenodo.14872895"
+"DOI (Latest)" = "https://doi.org/10.5281/zenodo.14934426"
 "DOI (All Versions)" = "https://doi.org/10.5281/zenodo.14862141"
 
 [tool.setuptools]
