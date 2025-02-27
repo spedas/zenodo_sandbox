@@ -26,46 +26,55 @@ jobs:
           echo "Zenodo response: $RESPONSE"  # Debugging step
           
           # Check to see if we got a draft, or a published release
-          
-          LATEST_RECID=$(echo "$RESPONSE" | jq -r '.[0].id')
       
-          LATEST_PUBLIC_RECORD_ID=$(echo "$RESPONSE" | jq -r '.[0].id')
-          LATEST_PUBLIC_RECORD_STATE=$(echo "$RESPONSE" | jq -r '.[0].state')
-          LATEST_PUBLIC_RECORD_SUBMITTED=$(echo "$RESPONSE" | jq -r '.[0].submitted')
+          LATEST_RECORD_ID=$(echo "$RESPONSE" | jq -r '.[0].id')
+          LATEST_RECORD_STATE=$(echo "$RESPONSE" | jq -r '.[0].state')
+          LATEST_RECORD_SUBMITTED=$(echo "$RESPONSE" | jq -r '.[0].submitted')
   
-          echo "Latest record ID:" $LATEST_PUBLIC_RECORD_ID          
-          echo "Latest record state:" $LATEST_PUBLIC_RECORD_STATE
-          echo "Latest record submission status:" $LATEST_PUBLIC_RECORD_SUBMITTED
+          echo "Latest record ID:" $LATEST_RECORD_ID          
+          echo "Latest record state:" $LATEST_RECORD_STATE
+          echo "Latest record submission status:" $LATEST_RECORD_SUBMITTED
           
-          if [ -z "$LATEST_PUBLIC_RECORD_ID" ] || [ "$LATEST_PUBLIC_RECORD_ID" == "null" ]; then
+          if [ -z "$LATEST_RECORD_ID" ] || [ "$LATEST_RECORD_ID" == "null" ]; then
             echo "Error: Could not find latest record in private API."
             exit 1
           else
-            echo "Found latest public record ID: $LATEST_PUBLIC_RECORD_ID"
-            echo "LATEST_PUBLIC_RECORD_ID=$LATEST_PUBLIC_RECORD_ID" >> $GITHUB_ENV
+            echo "Found latest record ID: $LATEST_RECORD_ID"
+            echo "LATEST_RECORD_ID=$LATEST_RECORD_ID" >> $GITHUB_ENV
           fi
 
-          if [ -z "$LATEST_PUBLIC_RECORD_SUBMITTED" ] || [ "$LATEST_PUBLIC_RECORD_SUBMITTED" == "null" ]; then
+          if [ -z "$LATEST_RECORD_SUBMITTED" ] || [ "$LATEST_RECORD_SUBMITTED" == "null" ]; then
             echo "Error: Could not find latest record submission status in private API."
             exit 1
           fi
           
-          if [ "$LATEST_PUBLIC_RECORD_SUBMITTED" == "false" ]; then
-            echo "Latest record is published, need to create a new draft"
-          else
+          if [ "$LATEST_RECORD_SUBMITTED" == "false" ]; then
             echo "A previous draft already exists, need to clear and reuse."
+            DRAFT_RECID=$LATEST_RECORD_ID
+            NEED_NEW_DRAFT="false"
+          else
+            echo "Latest record is published, need to create a new draft"
+            NEED_NEW_DRAFT="true"
+            DRAFT_RECID="none"
           fi
+
+          echo "NEED_NEW_DRAFT:" $NEED_NEW_DRAFT
+          echo "NEED_NEW_DRAFT=${NEED_NEW_DRAFT} >> $GITHUB_ENV  
+
+          echo "DRAFT_RECID:" $DRAFT_RECID
+          echo "DRAFT_RECID=${DRAFT_RECID} >> $GITHUB_ENV  
           
-          exit 
 
       - name: Create new version from latest record ID
         id: new_version
+        if: env.NEED_NEW_DRAFT == 'true'
         run: |
-         
+ 
+          LATEST_RECORD_ID=env.LATEST_RECORD_ID        
           ZENODO_API_TOKEN=${{ secrets.ZENODO_API_TOKEN }} 
-          echo "Creating new version using Zenodo record $LATEST_PUBLIC_RECORD_ID, access token $ZENODO_API_TOKEN"
+          echo "Creating new version using Zenodo record $LATEST_RECORD_ID, access token $ZENODO_API_TOKEN"
 
-          REQUEST=https://zenodo.org/api/deposit/depositions/$LATEST_PUBLIC_RECORD_ID/actions/newversion?access_token=$ZENODO_API_TOKEN
+          REQUEST=https://zenodo.org/api/deposit/depositions/$LATEST_RECORD_ID/actions/newversion?access_token=$ZENODO_API_TOKEN
 
           echo $REQUEST
           
@@ -75,32 +84,64 @@ jobs:
           echo Response:
           echo $RESPONSE
           
-          NEW_RECORD_ID=$(echo "$RESPONSE" | jq -r '.id')
-          #NEW_RECORD_ID="14872810"
-          echo New record ID: $NEW_RECORD_ID
+          DRAFT_RECID=$(echo "$RESPONSE" | jq -r '.id')
+          #DRAFT_RECID="14872810"
+          echo New record ID: $DRAFT_RECID
 
-          if [ -z "$NEW_RECORD_ID" ] || [ "$NEW_RECORD_ID" == "null" ]; then
+          if [ -z "$DRAFT_RECID" ] || [ "$DRAFT_RECID" == "null" ]; then
             echo "Error: Could not create new record in private API."
             echo "Perhaps a draft release already exists?"
             exit 1
           fi
 
-          echo "New deposition ID: $NEW_RECORD_ID"
-          NEW_DOI="10.5281/zenodo.$NEW_RECORD_ID"
+          echo "New deposition ID: $DRAFT__ID"
+          NEW_DOI="10.5281/zenodo.$DRAFT_ID"
           echo "New DOI:" $NEW_DOI
           NEW_DOI_URL="https://doi.org/$NEW_DOI"
           echo "NEW DOI (full URL):" $NEW_DOI_URL
 
-          echo "NEW_RECORD_ID=$NEW_RECORD_ID" >> $GITHUB_ENV
+          echo "DRAFT_RECID=$DRAFT_RECID" >> $GITHUB_ENV
           echo "NEW_DOI=$NEW_DOI" >> $GITHUB_ENV
           echo "NEW_DOI_URL=$NEW_DOI_URL" >> $GITHUB_ENV
+
+      - name: Delete old files from draft record
+        id: delete_old_files_from_draft
+        run: |
+
+          ZENODO_API_TOKEN=${{ secrets.ZENODO_API_TOKEN }} 
+
+          ZENODO_API_TOKEN=${{ secrets.ZENODO_API_TOKEN }}
+          DRAFT_RECORD_ID=${{ env.DRAFT_RECID }}
+
+          # Fetch the list of files in the draft
+          FILES=$(curl -s -H "Authorization: Bearer $ZENODO_API_TOKEN" \
+            "https://zenodo.org/api/deposit/depositions/$DRAFT_RECID/files")
+
+          echo Files:
+          echo $FILES
+        
+          # Extract file IDs and delete each one
+          echo "$FILES" | jq -r '.[].id' | while read FILE_ID; do
+            echo "Deleting file ID: $FILE_ID"
+            curl -s -X DELETE -H "Authorization: Bearer $ZENODO_API_TOKEN" \
+              "https://zenodo.org/api/deposit/depositions/$DRAFT_RECORD_ID/files/$FILE_ID"
+          done
+      
+          echo "Old cloned files removed from Zenodo draft deposit."
+
+          # Fetch the list of files in the draft
+          FILES=$(curl -s -H "Authorization: Bearer $ZENODO_API_TOKEN" \
+            "https://zenodo.org/api/deposit/depositions/$DRAFT_RECID/files")
+          echo Files after delete:
+          echo $FILES
 
       - name: Update DOI references in distribution files
         id: update_doi_files
         run: |
          
           ZENODO_API_TOKEN=${{ secrets.ZENODO_API_TOKEN }} 
-          
+          NEW_DOI=${{ env.NEW_DOI }}
+          NEW_DOI_URL=${{ env.NEW_DOI_URL }}
           
           echo "Setting Git identity to github-actions[bot]"
           git config --local user.name "github-actions[bot]"
@@ -147,4 +188,4 @@ jobs:
           git add CITATION.cff
           git commit -m "Updated DOI in CITATION.cff" || echo "No changes to commit"
           git push
-
+          
