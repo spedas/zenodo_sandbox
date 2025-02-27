@@ -77,7 +77,7 @@ jobs:
         if: env.NEED_NEW_DRAFT == 'true'
         run: |
  
-          LATEST_RECORD_ID=env.LATEST_RECORD_ID        
+          LATEST_RECORD_ID=${{ env.LATEST_RECORD_ID }}      
           ZENODO_API_TOKEN=${{ secrets.ZENODO_API_TOKEN }} 
           echo "Creating new version using Zenodo record $LATEST_RECORD_ID, access token $ZENODO_API_TOKEN"
 
