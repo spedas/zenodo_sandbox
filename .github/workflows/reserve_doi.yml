@@ -94,8 +94,8 @@ jobs:
             exit 1
           fi
 
-          echo "New deposition ID: $DRAFT__ID"
-          NEW_DOI="10.5281/zenodo.$DRAFT_ID"
+          echo "New deposition ID: $DRAFT_RECID"
+          NEW_DOI="10.5281/zenodo.$DRAFT_RECID"
           echo "New DOI:" $NEW_DOI
           NEW_DOI_URL="https://doi.org/$NEW_DOI"
           echo "NEW DOI (full URL):" $NEW_DOI_URL
