@@ -2,7 +2,6 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: zenodo_sandbox v1.1.6 cff
 message: >-
   If you use this software, please cite it using the
   metadata from this file. (cff)
@@ -36,6 +35,5 @@ keywords:
   - sandbox
   - testbed
 license: MIT
-version: 1.1.6
 doi: 10.5281/zenodo.14941748
-date-released: '2025-02-13'
+
